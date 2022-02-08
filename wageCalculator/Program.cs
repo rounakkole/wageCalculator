@@ -15,36 +15,36 @@ class Program
         int perHrSalary = 20;
         int totalSalary = 0;
 
-        Random rnd = new Random();
-        int present = (rnd.Next(3));
-
-        switch (present)
+        for (int day = 1; day <= 20; day++)
         {
+            Random rnd = new Random();
+            int present = (rnd.Next(3));
 
-            case 0:
-                Console.WriteLine("Employee is absent");
-                workingHr = 0;
-                break;
-            case 1:
-                Console.WriteLine("Employee is present");
-                workingHr = 8;
-                break;
-            case 2:
-                Console.WriteLine("Employee is part time present");
-                workingHr = 4;
-                break;
-            default:
-                Console.WriteLine("error");
-                break;
+            switch (present)
+            {
+
+                case 0:
+                    workingHr = 0;
+                    break;
+                case 1:
+                    workingHr = 8;
+                    break;
+                case 2:
+                    workingHr = 4;
+                    break;
+                default:
+                    Console.WriteLine("error");
+                    break;
+            }
+
+            int salary = perHrSalary * workingHr;
+            totalSalary = totalSalary + salary;
         }
-
-        int salary = perHrSalary * workingHr;
-        totalSalary = totalSalary + salary;
-        Console.WriteLine($"Total Salary {totalSalary}");
+            Console.WriteLine($"Total Salary {totalSalary}");
 
 
+        }
     }
-}
 
 
 
