@@ -14,6 +14,7 @@ class Program
         int workingHr = 0;
         int perHrSalary = 20;
         int totalSalary = 0;
+        int totalHr = 0;
 
         for (int day = 1; day <= 20; day++)
         {
@@ -39,12 +40,21 @@ class Program
 
             int salary = perHrSalary * workingHr;
             totalSalary = totalSalary + salary;
+            totalHr = totalHr + workingHr;
+
+            if (totalHr >= 100)
+            {
+                break;
+            }
+
         }
-            Console.WriteLine($"Total Salary {totalSalary}");
+        Console.WriteLine($"Total Salary: {totalSalary}");
+        Console.WriteLine($"Total working hours: {totalHr}");
 
 
-        }
+
     }
+}
 
 
 
