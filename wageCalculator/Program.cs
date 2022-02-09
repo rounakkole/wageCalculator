@@ -7,10 +7,9 @@ namespace wageCalculator;
 
 class Program
 {
-    public static void Main(String[] args)
 
+    public static void GetTotalHr()
     {
-        Console.WriteLine($"Employee Wage Calculator");
         int workingHr = 0;
         int perHrSalary = 20;
         int totalSalary = 0;
@@ -40,7 +39,6 @@ class Program
 
             int salary = perHrSalary * workingHr;
             totalSalary = totalSalary + salary;
-            totalHr = totalHr + workingHr;
 
             if (totalHr >= 100)
             {
@@ -51,9 +49,23 @@ class Program
         Console.WriteLine($"Total Salary: {totalSalary}");
         Console.WriteLine($"Total working hours: {totalHr}");
 
+    }
+    public static void Main(String[] args)
+
+    {
+        Console.WriteLine($"Employee Wage Calculator");
+        GetTotalHr();
+
+
+
 
 
     }
+
+
+
+
+
 }
 
 
