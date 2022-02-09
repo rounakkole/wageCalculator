@@ -8,7 +8,7 @@ namespace wageCalculator;
 class Program
 {
 
-    public static void GetTotalHr()
+    public static void GetEmpWage()
     {
         int workingHr = 0;
         int perHrSalary = 20;
@@ -54,16 +54,9 @@ class Program
 
     {
         Console.WriteLine($"Employee Wage Calculator");
-        GetTotalHr();
-
-
-
-
+        GetEmpWage();
 
     }
-
-
-
 
 
 }
