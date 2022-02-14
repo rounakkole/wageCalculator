@@ -1,1 +1,2 @@
-# employeeWage
+# git repository
+# visual studio project
