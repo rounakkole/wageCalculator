@@ -12,8 +12,10 @@ class Program
 
     {
         Console.WriteLine($"Employee Wage Calculator");
-        GetEmployeeWage Dmart = new GetEmployeeWage("Dmart", 20, 20, 100);
-        GetEmployeeWage Reliance = new GetEmployeeWage("Reliance", 25, 22, 50);
+        IAddDetails addCompanyDetails = new GetEmployeeWage(2);
+        addCompanyDetails.addEmployeeWage("Dmart", 20, 20, 100);
+        addCompanyDetails.addEmployeeWage("Reliance", 25, 22, 50);
+        addCompanyDetails.GetEmpWage();
 
     }
 }

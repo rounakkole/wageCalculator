@@ -6,56 +6,66 @@ using System.Threading.Tasks;
 
 namespace wageCalculator
 {
-    internal class GetEmployeeWage
+    internal class GetEmployeeWage : IAddDetails
     {
 
-        public string CompanyName;
-        public int EmpRatePerHr;
-        public int MaxDays;
-        public int MaxHrs;
-
-        public GetEmployeeWage(string companyName, int empRatePerHr, int maxDays, int maxHrs)
+        private AddWageDetails[] companyArray;
+        private int i = 0;
+        public GetEmployeeWage(int size)
         {
-            CompanyName = companyName;
-            EmpRatePerHr = empRatePerHr;
-            MaxDays = maxDays;
-            MaxHrs = maxHrs;
-            EmployeeWage();
+            this.companyArray = new AddWageDetails[size];
         }
 
-        public void EmployeeWage()
+
+        public void addEmployeeWage(string companyName, int wagePerHour, int totalWorkingDays, int maxHrsWorked)
+        {
+            companyArray[this.i] = new AddWageDetails(companyName, wagePerHour, totalWorkingDays, maxHrsWorked);
+            i++;
+        }
+        public void GetEmpWage()
+        {
+            for (int j = 0; j < companyArray.Length; j++)
+            {
+                companyArray[j].SetEmpWage(this.EmployeeWage(companyArray[j]));
+                Console.WriteLine(companyArray[j].toString());
+            }
+        }
+
+
+        public int EmployeeWage(AddWageDetails addWageDetails)
         {
             //declaration and initilization
             int totalSalary = 0;
             int totalHr = 0;
-            Dictionary<int, int> dailyWageDict = new Dictionary<int, int>();
+            //Dictionary<int, int> dailyWageDict = new Dictionary<int, int>();
 
-            for (int day = 0; day < MaxDays; day++)
+            for (int day = 0; day < addWageDetails.MaxDays; day++)
             {
 
 
                 int workingHr = GetWorkingHr();
                 totalHr = totalHr + workingHr;
-                if (totalHr >= MaxHrs)
+                if (totalHr >= addWageDetails.MaxHrs)
                 {
                     break;
                 }
-                int salary = EmpRatePerHr * workingHr;
+                int salary = addWageDetails.EmpRatePerHr * workingHr;
 
                 totalSalary = totalSalary + salary;
-                dailyWageDict.Add(day, salary);
+                //dailyWageDict.Add(day, salary);
 
             }
-            Console.WriteLine(CompanyName);
+            /*Console.WriteLine(addWageDetails.CompanyName);
             Console.WriteLine($"Total Salary: {totalSalary}");
             Console.WriteLine($"Total working hours: {totalHr}");
-            //Console.WriteLine(String.Join(" ", dailyWageArray));
+            Console.WriteLine(String.Join(" ", dailyWageArray));
 
             for (int i = 0; i < dailyWageDict.Count; i++)
             {
                 Console.WriteLine($"day {i + 1}  wage {dailyWageDict[i]}");
 
-            }
+            }*/
+            return totalSalary;
         }
 
 
