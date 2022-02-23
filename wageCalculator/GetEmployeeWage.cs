@@ -27,7 +27,7 @@ namespace wageCalculator
             //declaration and initilization
             int totalSalary = 0;
             int totalHr = 0;
-            //Dictionary<int, int> dailyWageDict = new Dictionary<int, int>();
+            Dictionary<int, int> dailyWageDict = new Dictionary<int, int>();
 
             for (int day = 0; day < addWageDetails.MaxDays; day++)
             {
@@ -42,19 +42,14 @@ namespace wageCalculator
                 int salary = addWageDetails.EmpRatePerHr * workingHr;
 
                 totalSalary = totalSalary + salary;
-                //dailyWageDict.Add(day, salary);
+               dailyWageDict.Add(day, salary);
 
             }
-            /*Console.WriteLine(addWageDetails.CompanyName);
-            Console.WriteLine($"Total Salary: {totalSalary}");
-            Console.WriteLine($"Total working hours: {totalHr}");
-            Console.WriteLine(String.Join(" ", dailyWageArray));
-
+            Console.WriteLine(addWageDetails.CompanyName);
             for (int i = 0; i < dailyWageDict.Count; i++)
             {
                 Console.WriteLine($"day {i + 1}  wage {dailyWageDict[i]}");
-
-            }*/
+            }
             addWageDetails.SetEmpWage(totalSalary);
             Console.WriteLine(addWageDetails.toString());
         }
