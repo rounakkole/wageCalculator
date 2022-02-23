@@ -28,7 +28,7 @@ namespace wageCalculator
 
         public string toString()
         {
-            return ($"total wage of {this.CompanyName} is {this.totalSalary}");
+            return ($"total wage of {this.CompanyName} employee is {this.totalSalary}");
         }
     }
 }

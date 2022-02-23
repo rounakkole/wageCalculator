@@ -3,36 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace wageCalculator
 {
     internal class GetEmployeeWage : IAddDetails
     {
-
-        private AddWageDetails[] companyArray;
-        private int i = 0;
-        public GetEmployeeWage(int size)
-        {
-            this.companyArray = new AddWageDetails[size];
-        }
-
-
+        ArrayList CompanyArrayList = new ArrayList();
         public void addEmployeeWage(string companyName, int wagePerHour, int totalWorkingDays, int maxHrsWorked)
         {
-            companyArray[this.i] = new AddWageDetails(companyName, wagePerHour, totalWorkingDays, maxHrsWorked);
-            i++;
+            CompanyArrayList.Add(new AddWageDetails(companyName, wagePerHour, totalWorkingDays, maxHrsWorked));
         }
         public void GetEmpWage()
         {
-            for (int j = 0; j < companyArray.Length; j++)
+     
+            foreach (var employee in CompanyArrayList)
             {
-                companyArray[j].SetEmpWage(this.EmployeeWage(companyArray[j]));
-                Console.WriteLine(companyArray[j].toString());
+                this.EmployeeWage((AddWageDetails)employee);
             }
         }
-
-
-        public int EmployeeWage(AddWageDetails addWageDetails)
+        public void EmployeeWage(AddWageDetails addWageDetails)
         {
             //declaration and initilization
             int totalSalary = 0;
@@ -65,7 +55,8 @@ namespace wageCalculator
                 Console.WriteLine($"day {i + 1}  wage {dailyWageDict[i]}");
 
             }*/
-            return totalSalary;
+            addWageDetails.SetEmpWage(totalSalary);
+            Console.WriteLine(addWageDetails.toString());
         }
 
 
