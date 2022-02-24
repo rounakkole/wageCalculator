@@ -9,6 +9,6 @@ namespace wageCalculator
     internal interface IAddDetails
     {
         public void addEmployeeWage(string companyName, int wagePerHour, int totalWorkingDays, int maxHrsWorked);
-        public void GetEmpWage();
+        public void GetEmpWage(string CompanyWage);
     }
 }
